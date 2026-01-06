@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Galaxy Codependency Recovery Affirmations</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<style>
+  :root {
+    --bg-deep: #020617;
+    --bg-mid: #0b1120;
+    --card-grad: radial-gradient(circle at top, #1f2937, #020617 75%);
+    --accent: #38bdf8;
+    --accent-soft: #a855f7;
+    --accent-alt: #22c55e;
+    --text-main: #e5e7eb;
+    --text-soft: #9ca3af;
+    --border-soft: rgba(129, 140, 248, 0.8);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    background:
+      radial-gradient(circle at top, #1d2345, #020617 60%),
+      linear-gradient(to bottom, #020617, #020617);
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    color: var(--text-main);
+    overflow: hidden;
+  }
+
+  /* Galaxy starfield */
+  .stars-layer {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      radial-gradient(2px 2px at 10% 20%, rgba(248,250,252,0.9), transparent),
+      radial-gradient(1.5px 1.5px at 80% 30%, rgba(248,250,252,0.8), transparent),
+      radial-gradient(1.7px 1.7px at 30% 70%, rgba(248,250,252,0.7), transparent),
+      radial-gradient(1.4px 1.4px at 60% 85%, rgba(248,250,252,0.7), transparent),
+      radial-gradient(2px 2px at 20% 85%, rgba(129,140,248,0.8), transparent);
+    animation: twinkle 11s ease-in-out infinite alternate;
+  }
+
+  @keyframes twinkle {
+    from { opacity: 0.7; transform: translateY(0); }
+    to   { opacity: 1; transform: translateY(-3px); }
+  }
+
+  .widget {
+    position: relative;
+    z-index: 1;
+    width: min(560px, 100%);
+    background: radial-gradient(circle at top, #020617, #020617 80%);
+    border-radius: 26px;
+    padding: 1.15rem 1.25rem 1.4rem;
+    border: 1px solid var(--border-soft);
+    box-shadow:
+      0 24px 58px rgba(15, 23, 42, 0.95),
+      0 0 0 2px rgba(56, 189, 248, 0.45);
+    overflow: hidden;
+  }
+
+  .widget::before {
+    content: "";
+    position: absolute;
+    inset: -30%;
+    background:
+      radial-gradient(circle at 10% -10%, rgba(56,189,248,0.32), transparent 60%),
+      radial-gradient(circle at 90% 0%, rgba(168,85,247,0.28), transparent 60%),
+      radial-gradient(circle at 50% 120%, rgba(34,197,94,0.2), transparent 60%);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .6rem;
+    margin-bottom: .7rem;
+  }
+
+  .title-wrap {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+  }
+
+  .galaxy-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    background: radial-gradient(circle at 30% 20%, #fefce8, #a855f7);
+    display: grid;
+    place-items: center;
+    box-shadow: 0 14px 28px rgba(129,140,248,0.95);
+    border: 1px solid rgba(56, 189, 248, 0.6);
+    font-size: 1.35rem;
+  }
+
+  .title {
+    font-size: .9rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .badge {
+    padding: .3rem .7rem;
+    border-radius: 999px;
+    background: rgba(15, 23, 42, 0.9);
+    border: 1px solid rgba(129, 140, 248, 0.9);
+    color: var(--text-soft);
+    font-size: .7rem;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: .6rem .75rem;
+    margin-bottom: .55rem;
+  }
+
+  .controls-group {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+  }
+
+  label {
+    font-size: .72rem;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--text-soft);
+  }
+
+  select {
+    border-radius: 999px;
+    border: 1px solid rgba(148,163,184,0.8);
+    padding: .35rem .7rem;
+    font-size: .8rem;
+    background: rgba(15,23,42,0.9);
+    color: var(--text-main);
+    outline: none;
+    min-width: 220px;
+    transition: border-color .15s ease, box-shadow .15s ease, background .15s ease;
+  }
+
+  select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(56,189,248,0.4);
+    background: #020617;
+  }
+
+  .card {
+    margin-top: .35rem;
+    background: var(--card-grad);
+    border-radius: 20px;
+    border: 1px dashed rgba(56, 189, 248, 0.7);
+    padding: 1rem .9rem 1rem;
+    position: relative;
+    min-height: 96px;
+  }
+
+  .card::before {
+    content: "✶";
+    position: absolute;
+    top: .4rem;
+    right: .8rem;
+    color: rgba(129, 230, 217, 0.7);
+    font-size: 1.2rem;
+  }
+
+  .affirmation {
+    font-size: 1rem;
+    line-height: 1.55;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity .28s ease, transform .28s ease;
+  }
+
+  .affirmation.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .button-bar {
+    margin-top: .65rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  button {
+    border-radius: 999px;
+    border: 1px solid rgba(56,189,248,0.95);
+    padding: .45rem .95rem;
+    font-size: .8rem;
+    font-weight: 700;
+    cursor: pointer;
+    background: linear-gradient(135deg, #0ea5e9, #a855f7);
+    color: #ecfeff;
+    display: inline-flex;
+    align-items: center;
+    gap: .35rem;
+    box-shadow: 0 14px 26px rgba(55,65,194,0.95);
+    transition: transform .08s ease, box-shadow .12s ease, filter .1s ease;
+  }
+
+  button:hover {
+    transform: translateY(-1px);
+    filter: brightness(1.05);
+  }
+
+  button:active {
+    transform: translateY(1px) scale(.985);
+    box-shadow: 0 7px 14px rgba(55,65,194,0.9);
+  }
+
+  .cite {
+    margin-top: .7rem;
+    font-size: .7rem;
+    color: var(--text-soft);
+    text-align: center;
+    line-height: 1.4;
+  }
+
+  .cite span {
+    font-style: italic;
+  }
+
+  @media (max-width: 520px) {
+    .header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .badge {
+      align-self: flex-start;
+    }
+    .controls {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    select {
+      width: 100%;
+      min-width: 0;
+    }
+    button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="stars-layer"></div>
+
+<div class="widget">
+  <div class="inner">
+    <div class="header">
+      <div class="title-wrap">
+        <div class="galaxy-icon">🪐</div>
+        <div class="title">Galaxy Codependency Healing Deck</div>
+      </div>
+      <div class="badge">one star at a time</div>
+    </div>
+
+    <div class="controls">
+      <div class="controls-group">
+        <label for="categorySelect">Category</label>
+        <select id="categorySelect">
+          <option value="selfWorth">Self-worth & Lovability</option>
+          <option value="boundaries">Boundaries & Saying No</option>
+          <option value="autonomy">Autonomy & Self-Trust</option>
+          <option value="lettingGo">Letting Go & Serenity</option>
+          <option value="innerChild">Inner Child & Belonging</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="card">
+      <div id="affirmationText" class="affirmation"></div>
+    </div>
+
+    <div class="button-bar">
+      <button id="nextStarBtn">✨ New star</button>
+    </div>
+
+    <div class="cite">
+      Original affirmations for healing codependency and building<br />
+      <span>healthy connection, self-respect, and emotional safety.</span>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 200 original affirmations, grouped into 5 categories
+
+  const CATEGORIES = {
+    selfWorth: [
+      "I am worthy of love that is mutual, steady, and kind.",
+      "I am learning to choose myself without guilt or apology.",
+      "My needs matter as much as anyone else’s needs.",
+      "I am allowed to take up emotional, physical, and relational space.",
+      "I can care about others without abandoning myself.",
+      "I release the belief that my value depends on being useful to others.",
+      "It is safe to honor my limits and energy today.",
+      "I do not have to fix, rescue, or manage anyone to be worthy of love.",
+      "I can practice compassion for others and compassion for myself at the same time.",
+      "I am allowed to rest even when others want more from me.",
+      "I am learning to recognize when I move into self-sacrifice.",
+      "I can pause before reacting and choose a gentler response.",
+      "My feelings deserve to be heard, respected, and honored.",
+      "I can disagree with someone and still be safe and lovable.",
+      "I am allowed to say no without explanation.",
+      "Boundaries protect my peace, not my isolation.",
+      "It is not my job to regulate other people’s emotions.",
+      "I am not responsible for how others react to my healthy limits.",
+      "I can choose relationships that feel warm, reciprocal, and supportive.",
+      "I deserve connection that does not require self-erasure.",
+      "I am learning to tolerate the discomfort of prioritizing myself.",
+      "My worth does not depend on performance or perfection.",
+      "I am allowed to make mistakes and still belong.",
+      "I can release shame that was never mine to carry.",
+      "Today I choose gentleness instead of self-criticism.",
+      "I am capable of building trust with myself one choice at a time.",
+      "I listen to my intuition and respect what it tells me.",
+      "I am allowed to leave situations that harm my nervous system.",
+      "I no longer confuse intensity with love or care.",
+      "I am learning what real safety feels like in my body.",
+      "I can let go of relationships that rely on proving my worth.",
+      "I choose partners and friends who value mutual effort.",
+      "I do not have to earn affection through overgiving.",
+      "I allow myself to receive kindness without guilt.",
+      "I am worthy of steady, reliable emotional presence.",
+      "I release the urge to control outcomes that are not mine to control.",
+      "I trust that other adults can handle their own responsibilities.",
+      "I am allowed to step back when I feel drained or overwhelmed.",
+      "My job is to care for myself; others must care for themselves.",
+      "I can love without rescuing and support without enabling."
+    ],
+    boundaries: [
+      "I am no longer available for relationships rooted in chaos.",
+      "I can choose peace over reactivity.",
+      "I am allowed to move slowly and thoughtfully in connection.",
+      "I am worthy of being chosen without having to prove myself.",
+      "I can be kind without abandoning my boundaries.",
+      "I give myself permission to grow beyond old relational patterns.",
+      "I am allowed to change my mind when something no longer feels right.",
+      "I release loyalty to people who do not treat me with care.",
+      "I am learning to trust consistency more than promises.",
+      "I deserve relationships where my inner world is respected.",
+      "My voice has value even when it shakes.",
+      "I can express my needs clearly and calmly.",
+      "My emotions are signals, not problems to hide.",
+      "I honor my anger as a boundary-setting ally.",
+      "It is safe to speak up for myself.",
+      "I can ask for help without shame or fear.",
+      "I am allowed to be seen in my vulnerability.",
+      "I do not need to perform strength to be accepted.",
+      "I practice honesty with myself first.",
+      "I release patterns of people-pleasing that silence my truth.",
+      "I am growing into emotional steadiness and self-trust.",
+      "I can separate my identity from others’ reactions.",
+      "I am no longer defined by who approves of me.",
+      "I am building a life that feels supportive to my nervous system.",
+      "I am allowed to exist without constantly proving my value.",
+      "I choose environments where I feel calm, seen, and safe.",
+      "I am learning to recognize when love feels secure and grounded.",
+      "I can let go of relationships that thrive on imbalance.",
+      "I honor the grief that comes with releasing old dynamics.",
+      "Healing does not require me to shrink anymore.",
+      "I am worthy of emotional reciprocity.",
+      "I can choose partners who respect my boundaries.",
+      "I am allowed to take breaks from intensity.",
+      "I trust that space can strengthen healthy relationships.",
+      "I release the fear that abandonment is inevitable.",
+      "I am no longer willing to chase what harms me.",
+      "I choose connection that grows slowly and steadily.",
+      "I am allowed to walk away from inconsistency.",
+      "I treat myself with the patience I once reserved for others.",
+      "I am learning what healthy love feels like in real time."
+    ],
+    autonomy: [
+      "I can treat myself with kindness even when I feel insecure.",
+      "I honor the part of me that tried to survive through overgiving.",
+      "I can meet that part now with compassion instead of shame.",
+      "I no longer abandon myself to avoid conflict.",
+      "I am learning to stay with myself through discomfort.",
+      "I bring gentleness to memories of my past selves.",
+      "I deserve relationships where repair is possible.",
+      "I am allowed to choose peace over chaos.",
+      "I release the belief that love must feel exhausting.",
+      "I can say yes from desire instead of obligation.",
+      "I am allowed to protect my inner child.",
+      "I offer myself softness when I feel afraid.",
+      "I am capable of building a life rooted in dignity.",
+      "I am worthy of affection that does not require self-betrayal.",
+      "I honor my limits as a sacred expression of self-respect.",
+      "I choose to remain loyal to myself first.",
+      "I am allowed to grow beyond who I had to be to survive.",
+      "I am safe to practice new relational patterns.",
+      "I allow love that feels calm, present, and real.",
+      "I am worthy of relationships that nourish my spirit.",
+      "I am learning to trust my internal guidance.",
+      "I can pause, breathe, and choose what serves me.",
+      "I release urgency and return to steadiness.",
+      "I am allowed to move at my own pace.",
+      "I no longer confuse self-abandonment with generosity.",
+      "I choose authenticity over approval.",
+      "I honor the boundaries my body communicates to me.",
+      "I am allowed to leave when I feel unsafe or unseen.",
+      "I release responsibility for fixing others’ emotions.",
+      "I am free to choose love that does not drain me.",
+      "I can recognize when I deserve more care and respect.",
+      "I give myself permission to outgrow dysfunctional dynamics.",
+      "I am worthy of being cherished without conditions.",
+      "I trust myself to navigate relationships wisely.",
+      "I am learning to accept love that feels steady and kind.",
+      "I am allowed to rest from caregiving roles.",
+      "I release perfectionism and welcome gentleness.",
+      "I am safe to be seen as my full, authentic self.",
+      "I can be compassionate without losing myself.",
+      "I honor the courage it takes to change lifelong patterns."
+    ],
+    lettingGo: [
+      "I am worthy of safety in every relationship I choose.",
+      "I no longer prioritize harmony over self-respect.",
+      "I allow my nervous system to guide my choices.",
+      "I am capable of nurturing my own emotional world.",
+      "I am allowed to center my healing.",
+      "I offer myself patience as I unlearn old habits.",
+      "I can choose peace even when others choose chaos.",
+      "I honor the progress I make, no matter how small.",
+      "I release shame around my needs.",
+      "I am worthy of presence, respect, and reciprocity.",
+      "I am no longer obligated to tolerate emotional neglect.",
+      "I can meet my own needs with tenderness.",
+      "I am allowed to want comfort, stability, and kindness.",
+      "I choose relationships that support my growth.",
+      "I am learning to receive love without fear.",
+      "I release patterns rooted in fear of abandonment.",
+      "I can create a life built on inner safety.",
+      "I honor my capacity to change and heal.",
+      "I am allowed to protect my peace.",
+      "I can show up for myself in ways no one else ever has.",
+      "I trust that my worth is inherent, not earned.",
+      "I am allowed to say no and remain lovable.",
+      "I can soften self-judgment with compassion.",
+      "I am building connections grounded in trust and care.",
+      "I am worthy of love that does not cost me myself.",
+      "I release fear-based attachment and welcome grounded love.",
+      "I am allowed to put down what is too heavy for me.",
+      "I choose to treat myself with gentleness today.",
+      "I honor my healing as a sacred journey.",
+      "I am deserving of relationships that feel safe to stay in.",
+      "I am allowed to step back from emotional chaos.",
+      "I can choose clarity over confusion.",
+      "I honor the difference between caretaking and care.",
+      "I am worthy of relationships where my needs are considered.",
+      "I release the belief that my value comes from self-denial.",
+      "I can grieve what I didn’t receive and still move forward.",
+      "I am allowed to build new forms of belonging.",
+      "I trust myself to learn and grow at my own rhythm.",
+      "I am no longer required to disappear to be loved.",
+      "I choose connection that strengthens my sense of self."
+    ],
+    innerChild: [
+      "I am safe to remain present with my own emotions.",
+      "I am learning to soothe my inner child with care.",
+      "I can stop over-explaining and still be valid.",
+      "I am worthy of consistency and reliability.",
+      "I choose relationships where kindness is mutual.",
+      "I allow myself to receive support without shame.",
+      "I am not responsible for other people’s healing.",
+      "I can walk away from dynamics that drain my spirit.",
+      "I release guilt for prioritizing my emotional health.",
+      "I am worthy of gentle, affirming love.",
+      "I honor my instinct when something feels unsafe.",
+      "I am allowed to change how I show up in relationships.",
+      "I choose to invest energy where I feel respected.",
+      "I am learning to feel safe inside my own presence.",
+      "I am allowed to have boundaries and closeness together.",
+      "I release anxiety around being misunderstood.",
+      "I can communicate with clarity and compassion.",
+      "I accept that my needs are real and important.",
+      "I am building trust with myself through each small choice.",
+      "I choose love that nourishes instead of depletes.",
+      "I honor the progress of becoming more self-aligned.",
+      "I am allowed to outgrow relationships that require self-betrayal.",
+      "I can choose inner peace even when others resist my growth.",
+      "I am worthy of emotional presence and attunement.",
+      "I am learning that love can feel steady, calm, and warm.",
+      "I release urgency and allow healing to unfold.",
+      "I am allowed to rest inside my own acceptance.",
+      "I treat myself with the same patience I offer others.",
+      "I am capable of building a life rooted in self-respect.",
+      "I am allowed to exist without earning love.",
+      "I am learning to remain loyal to my inner truth.",
+      "I can let go of relationships that cannot meet me halfway.",
+      "I honor my boundaries as acts of self-care.",
+      "I am worthy of gentleness in every stage of healing.",
+      "I release the story that I must abandon myself to be loved.",
+      "I choose relationships that allow me to stay whole.",
+      "I am allowed to trust myself more than external approval.",
+      "I welcome connection that supports my authenticity.",
+      "I am building a life where I feel safe to belong.",
+      "Today, I choose myself with courage and compassion."
+    ]
+  };
+
+  const categorySelect = document.getElementById("categorySelect");
+  const textEl = document.getElementById("affirmationText");
+  const buttonEl = document.getElementById("nextStarBtn");
+
+  let currentCategory = "selfWorth";
+  let deck = [];
+  let index = 0;
+
+  function shuffleDeck(category) {
+    const list = CATEGORIES[category] || [];
+    deck = [...list];
+
+    for (let i = deck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [deck[i], deck[j]] = [deck[j], deck[i]];
+    }
+
+    index = 0;
+  }
+
+  function showNext() {
+    if (!deck.length) {
+      textEl.classList.remove("show");
+      setTimeout(() => {
+        textEl.textContent = "No affirmations loaded for this category.";
+        textEl.classList.add("show");
+      }, 20);
+      return;
+    }
+
+    if (index >= deck.length) {
+      shuffleDeck(currentCategory);
+    }
+
+    const text = deck[index];
+    index++;
+
+    textEl.classList.remove("show");
+    setTimeout(() => {
+      textEl.textContent = text;
+      textEl.classList.add("show");
+    }, 20);
+  }
+
+  // Handle category change
+  categorySelect.addEventListener("change", () => {
+    currentCategory = categorySelect.value;
+    shuffleDeck(currentCategory);
+
+    textEl.classList.remove("show");
+    setTimeout(() => {
+      const label = categorySelect.options[categorySelect.selectedIndex].text;
+      textEl.textContent = `Click the star to receive an affirmation for: ${label}. ✨`;
+      textEl.classList.add("show");
+    }, 20);
+  });
+
+  // Button click
+  buttonEl.addEventListener("click", showNext);
+
+  // Initial state
+  shuffleDeck(currentCategory);
+  textEl.textContent = "Click the star to receive an affirmation for: Self-worth & Lovability. ✨";
+  textEl.classList.add("show");
+</script>
+
+</body>
+</html>
